@@ -1,5 +1,6 @@
 package com.example.AvaliacaoOtavioMatheusNeves.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,14 +18,14 @@ public class Pedido {
     @Column(nullable = false)
     private Double valorTotal;
 
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ProdutoPedido> produtos;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente", nullable = false)
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_endereco_entrega")
     private EnderecoEntrega endereco;
 }

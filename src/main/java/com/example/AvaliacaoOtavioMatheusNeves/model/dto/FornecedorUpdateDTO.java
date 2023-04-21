@@ -10,17 +10,14 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class FornecedorDTO {
+public class FornecedorUpdateDTO {
     @NotBlank
     private String nome;
 
     @NotBlank
     private String cnpj;
 
-    @NotEmpty
-    @Valid
-    private List<ProdutoDTO> produtos;
+    private List<Produto> produtos;
 
-    @NotEmpty
     private List<Cliente> clientes;
 }

@@ -12,7 +12,7 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class ClienteDTO {
+public class ClienteUpdateDTO {
     @NotBlank
     private String nome;
 
@@ -23,11 +23,7 @@ public class ClienteDTO {
     @NotBlank
     private String telefone;
 
-    @NotEmpty
-    @Valid
-    private List<EnderecoDTO> enderecos;
+    private List<Endereco> enderecos;
 
-    @NotNull
-    @Valid
-    private CartaoCreditoDTO cartao;
+    private CartaoCredito cartao;
 }

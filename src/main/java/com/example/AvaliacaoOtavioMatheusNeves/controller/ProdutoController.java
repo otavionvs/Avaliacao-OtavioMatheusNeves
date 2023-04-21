@@ -54,7 +54,7 @@ public class ProdutoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteById(Long id) {
+    public ResponseEntity<String> deleteById(@PathVariable("id") Long id) {
         if(!produtoService.existsById(id)){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrado!");
         }

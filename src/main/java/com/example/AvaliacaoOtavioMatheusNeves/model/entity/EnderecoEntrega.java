@@ -1,5 +1,6 @@
 package com.example.AvaliacaoOtavioMatheusNeves.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,6 +17,7 @@ public class EnderecoEntrega {
     @JoinColumn(name = "id_endereco")
     private Endereco endereco;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "endereco")
     private Pedido pedido;
 

@@ -22,6 +22,4 @@ public class ProdutoDTO {
     @Positive
     private Integer quantidade;
 
-    @NotEmpty
-    private List<Fornecedor> fornecedors;
 }

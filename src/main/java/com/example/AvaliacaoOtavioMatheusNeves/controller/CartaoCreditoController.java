@@ -2,6 +2,7 @@ package com.example.AvaliacaoOtavioMatheusNeves.controller;
 
 import com.example.AvaliacaoOtavioMatheusNeves.model.dto.CartaoCreditoDTO;
 import com.example.AvaliacaoOtavioMatheusNeves.model.entity.CartaoCredito;
+import com.example.AvaliacaoOtavioMatheusNeves.model.entity.Endereco;
 import com.example.AvaliacaoOtavioMatheusNeves.service.CartaoCreditoService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/prova/cartao_credito")
+@RequestMapping("/prova/cartaocredito")
 @AllArgsConstructor
 public class CartaoCreditoController {
     private CartaoCreditoService cartaoCreditoService;
@@ -54,7 +55,7 @@ public class CartaoCreditoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteById(Long id) {
+    public ResponseEntity<String> deleteById(@PathVariable("id") Long id) {
         if(!cartaoCreditoService.existsById(id)){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cartão de Credito não encontrado!");
         }

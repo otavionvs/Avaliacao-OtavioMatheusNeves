@@ -1,6 +1,7 @@
 package com.example.AvaliacaoOtavioMatheusNeves.controller;
 
 import com.example.AvaliacaoOtavioMatheusNeves.model.dto.EnderecoEntregaDTO;
+import com.example.AvaliacaoOtavioMatheusNeves.model.dto.EnderecoEntregaUpdateDTO;
 import com.example.AvaliacaoOtavioMatheusNeves.model.entity.EnderecoEntrega;
 import com.example.AvaliacaoOtavioMatheusNeves.service.EnderecoEntregaService;
 import jakarta.validation.Valid;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/prova/endereco_entrega")
+@RequestMapping("/prova/enderecoentrega")
 @AllArgsConstructor
 public class EnderecoEntregaController {
     private EnderecoEntregaService enderecoEntregaService;
@@ -44,7 +45,7 @@ public class EnderecoEntregaController {
     @PutMapping("/{id}")
     public ResponseEntity<Object> update(
             @PathVariable("id") Long id,
-            @RequestBody @Valid EnderecoEntregaDTO enderecoEntregaDTO) {
+            @RequestBody @Valid EnderecoEntregaUpdateDTO enderecoEntregaDTO) {
         if(!enderecoEntregaService.existsById(id)){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("EnderecoEntrega não encontrado!");
         }
@@ -54,7 +55,7 @@ public class EnderecoEntregaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteById(Long id) {
+    public ResponseEntity<String> deleteById(@PathVariable("id") Long id) {
         if(!enderecoEntregaService.existsById(id)){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("EnderecoEntrega não encontrado!");
         }

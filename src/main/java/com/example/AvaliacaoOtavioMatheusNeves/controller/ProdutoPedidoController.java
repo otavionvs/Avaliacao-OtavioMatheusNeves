@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/prova/produto_pedido")
+@RequestMapping("/prova/produtopedido")
 @AllArgsConstructor
 public class ProdutoPedidoController {
     private ProdutoPedidoService produtoPedidoService;
@@ -54,7 +54,7 @@ public class ProdutoPedidoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteById(Long id) {
+    public ResponseEntity<String> deleteById(@PathVariable("id") Long id) {
         if(!produtoPedidoService.existsById(id)){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ProdutoPedido não encontrado!");
         }

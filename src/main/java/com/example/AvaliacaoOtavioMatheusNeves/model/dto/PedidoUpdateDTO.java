@@ -12,19 +12,14 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-public class PedidoDTO {
+public class PedidoUpdateDTO {
     @NotNull
     @Positive
     private Double valorTotal;
 
-    @NotEmpty
-    @Valid
-    private List<ProdutoPedidoDTO> produtos;
+    private List<ProdutoPedido> produtos;
 
-    @NotNull
     private Cliente cliente;
 
-    @NotNull
-    @Valid
-    private EnderecoEntregaDTO endereco;
+    private EnderecoEntrega endereco;
 }

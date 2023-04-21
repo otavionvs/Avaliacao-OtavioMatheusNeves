@@ -14,7 +14,4 @@ public class ProdutoPedidoDTO {
 
     @NotNull
     private Produto produto;
-
-    @NotNull
-    private Pedido pedido;
 }

@@ -1,5 +1,6 @@
 package com.example.AvaliacaoOtavioMatheusNeves.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,6 +20,7 @@ public class ProdutoPedido {
     @JoinColumn(name = "id_produto", nullable = false)
     private Produto produto;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_pedido")
     private Pedido pedido;

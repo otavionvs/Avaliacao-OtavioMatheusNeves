@@ -54,7 +54,7 @@ public class EnderecoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteById(Long id) {
+    public ResponseEntity<String> deleteById(@PathVariable("id") Long id) {
         if(!enderecoService.existsById(id)){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Endereco não encontrado!");
         }
