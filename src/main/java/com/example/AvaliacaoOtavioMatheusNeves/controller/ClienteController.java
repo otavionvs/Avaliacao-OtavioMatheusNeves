@@ -45,6 +45,9 @@ public class ClienteController {
 
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody @Valid ClienteDTO clienteDTO) {
+        if(clienteService.existsByEmail(clienteDTO.getEmail())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Email já em uso!");
+        }
         Cliente cliente = new Cliente();
         Endereco endereco;
         List<Endereco> enderecos = new ArrayList<>();
@@ -68,7 +71,14 @@ public class ClienteController {
         if(!clienteService.existsById(id)){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado!");
         }
+        
         Cliente cliente = clienteService.findById(id).get();
+        if(!clienteDTO.getEmail().equals(cliente.getEmail())){
+            if(clienteService.existsByEmail(clienteDTO.getEmail())){
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("Email já em uso!");
+            }
+        }
+
         BeanUtils.copyProperties(clienteDTO, cliente);
         if(clienteDTO.getEnderecos() != null){
             List<Endereco> enderecos = new ArrayList<>();

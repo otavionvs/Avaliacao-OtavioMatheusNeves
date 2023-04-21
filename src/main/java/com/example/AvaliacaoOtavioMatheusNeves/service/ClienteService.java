@@ -29,6 +29,10 @@ public class ClienteService {
         return clienteRepository.existsById(id);
     }
 
+    public Boolean existsByEmail(String Email) {
+        return clienteRepository.existsByEmail(Email);
+    }
+
     public void deleteById(Long id) {
         clienteRepository.deleteById(id);
     }
